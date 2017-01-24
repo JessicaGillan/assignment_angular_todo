@@ -15,7 +15,6 @@ todo.controller('todoCtrl',
       $scope.hideCompleted = false;
 
       $scope.createTodo = function() {
-        console.log($scope.items);
         var newItem = {
           text: $scope.item.text,
           dueDate: $scope.item.dueDate,
@@ -24,9 +23,11 @@ todo.controller('todoCtrl',
         $scope.items.push(newItem);
         $scope.item = {};
       };
+
       $scope.deleteTodo = function(index) {
         $scope.items.splice(index, 1);
       };
+
       $scope.deleteCompleted = function() {
         $scope.items = $scope.items.filter(function(item) {
           return !item.completed;
