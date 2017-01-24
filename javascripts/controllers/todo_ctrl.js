@@ -1,10 +1,6 @@
 todo.controller('todoCtrl',
   ['$scope', '$window',
     function($scope, $window) {
-      $scope.item = { text: "Get groceries from the store",
-                      dueDate: new Date(),
-                      completed: false }
-
       $scope.items = [
         { text: "Get groceries from the store",
                         dueDate: new Date(),
@@ -18,7 +14,22 @@ todo.controller('todoCtrl',
       ];
 
       $scope.createTodo = function() {
-        console.log($scope.item);
+        console.log($scope.items);
+        var newItem = {
+          text: $scope.item.text,
+          dueDate: $scope.item.dueDate,
+          completed: false
+        };
+        $scope.items.push(newItem);
+        $scope.item = {};
+      };
+      $scope.deleteTodo = function(index) {
+        $scope.items.splice(index, 1);
+      };
+      $scope.deleteCompleted = function() {
+        $scope.items = $scope.items.filter(function(item) {
+          return !item.completed;
+        });
       };
     }
   ]

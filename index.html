@@ -17,6 +17,7 @@
   <body class="container" ng-controller="todoCtrl">
     <h1>TODO</h1>
 
+    <button class="btn btn-warning pull-right" ng-click="deleteCompleted()">Delete completed items</button>
     <form class="form" ng-submit="createTodo()">
       <input type="text" name="text" ng-model="item.text">
       <input type="date" name="dueDate" ng-model="item.dueDate">
@@ -28,14 +29,16 @@
         <tr>
           <th>Item</th>
           <th>Complete By</th>
-          <th>Status</th>
+          <th>Completed</th>
+          <th>Delete</th>
         </tr>
       </thead>
       <tbody>
         <tr ng-repeat="item in items">
           <td>{{ item.text }}</td>
           <td>{{ item.dueDate | date:mediumDate }}</td>
-          <td>{{ item.completed ? "Complete!" : "Not Completed "}}</td>
+          <td><input type="checkbox" ng-model="item.completed"></td>
+          <td><a href="#" ng-click="deleteTodo($index)">X</a></td>
         </tr>
       </tbody>
     </table>
