@@ -12,6 +12,7 @@ todo.controller('todoCtrl',
                         dueDate: new Date(),
                         completed: false }
       ];
+      $scope.hideCompleted = false;
 
       $scope.createTodo = function() {
         console.log($scope.items);
@@ -30,6 +31,9 @@ todo.controller('todoCtrl',
         $scope.items = $scope.items.filter(function(item) {
           return !item.completed;
         });
+      };
+      $scope.toggleCompleted = function() {
+        $scope.hideCompleted = !$scope.hideCompleted;
       };
     }
   ]
