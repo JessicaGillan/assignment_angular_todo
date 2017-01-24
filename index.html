@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="todo">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Photo Widget</title>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.js" charset="utf-8"></script>
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+  </head>
+  <body class="container" ng-controller="todoCtrl">
+    <h1>TODO</h1>
+
+    <form class="form" ng-submit="createTodo()">
+      <input type="text" name="text" ng-model="item.text">
+      <input type="date" name="dueDate" ng-model="item.dueDate">
+      <input type="submit" name="submit" value="Create TODO" class="btn btn-success">
+    </form>
+
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Item</th>
+          <th>Complete By</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="item in items">
+          <td>{{ item.text }}</td>
+          <td>{{ item.dueDate | date:mediumDate }}</td>
+          <td>{{ item.completed ? "Complete!" : "Not Completed "}}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <script src="/javascripts/app.js" charset="utf-8"></script>
+    <script src="/javascripts/controllers/todo_ctrl.js" charset="utf-8"></script>
+  </body>
+</html>
