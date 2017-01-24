@@ -4,7 +4,8 @@ todo.directive('todoItem', function() {
     restrict: 'A',
     scope: {
       item: '=',
-      deleteItem: '&'
+      deleteItem: '&',
+      index: '@'
     }
   }
 });

@@ -1,4 +1,5 @@
 <td>{{ item.text }}</td>
 <td>{{ item.dueDate | date:mediumDate }}</td>
 <td><input type="checkbox" ng-model="item.completed"></td>
-<td><a href="#" ng-click="deleteItem({index: $index})">X</a></td>
+<td><a href="#" ng-click="deleteItem({index: index})">X</a></td>
+<td>Index: {{ index }}</td>

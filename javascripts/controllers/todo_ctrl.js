@@ -1,37 +1,19 @@
 todo.controller('todoCtrl',
-  ['$scope', '$window',
-    function($scope, $window) {
-      $scope.items = [
-        { text: "Get groceries from the store",
-                        dueDate: new Date(),
-                        completed: false },
-        { text: "Get kittens from the store",
-                        dueDate: new Date(),
-                        completed: false },
-        { text: "Get happiness from the store",
-                        dueDate: new Date(),
-                        completed: false }
-      ];
+  ['$scope', '$window', 'todoService',
+    function($scope, $window, todoService) {
+      $scope.items = todoService.getItems();
       $scope.hideCompleted = false;
 
       $scope.createTodo = function() {
-        var newItem = {
-          text: $scope.item.text,
-          dueDate: $scope.item.dueDate,
-          completed: false
-        };
-        $scope.items.push(newItem);
-        $scope.item = {};
+        todoService.createTodo($scope.item);
       };
 
       $scope.deleteTodo = function(index) {
-        $scope.items.splice(index, 1);
+        todoService.deleteTodo(index);
       };
 
       $scope.deleteCompleted = function() {
-        $scope.items = $scope.items.filter(function(item) {
-          return !item.completed;
-        });
+        todoService.deleteCompleted();
       };
       $scope.toggleCompleted = function() {
         $scope.hideCompleted = !$scope.hideCompleted;
