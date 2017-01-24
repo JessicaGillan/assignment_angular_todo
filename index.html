@@ -39,7 +39,7 @@
       <tbody>
         <tr ng-repeat="item in items"
             todo-item item="item" delete-item="deleteTodo(index)"
-            index="{{$index}}"
+            index="{{ $index }}"
             ng-hide="hideCompleted && item.completed">
         </tr>
       </tbody>

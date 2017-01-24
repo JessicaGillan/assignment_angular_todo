@@ -30,9 +30,11 @@ todo.factory('todoService', function() {
   };
 
   var deleteCompleted = function deleteCompleted() {
-    _items = _items.filter(function(item) {
+    var filteredItems = _items.filter(function(item) {
       return !item.completed;
     });
+
+    angular.copy(filteredItems, _items);
   };
 
   return {

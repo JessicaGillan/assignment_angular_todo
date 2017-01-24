@@ -15,6 +15,7 @@ todo.controller('todoCtrl',
       $scope.deleteCompleted = function() {
         todoService.deleteCompleted();
       };
+      
       $scope.toggleCompleted = function() {
         $scope.hideCompleted = !$scope.hideCompleted;
       };
